@@ -73,7 +73,7 @@ public class Block {
      * @return
      */
     public String computeHash() {
-        return SecurityUtils.applySha256(preHash + data + nonce + timestamp);
+        return SecurityUtils.applySha256(preHash + data + timestamp);
     }
 
     /**
@@ -86,6 +86,7 @@ public class Block {
         while (true) {
             comHash = SecurityUtils.applySha256(preHash + data + nonce + timestamp);
             if (target.equals(comHash.substring(0, difficulty))) {
+                System.out.println("工作量证明!");
                 break;
             }
             nonce++;

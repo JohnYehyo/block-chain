@@ -11,23 +11,22 @@ import com.johnyehyo.blockchain.entity.Chain;
  */
 public class ChainCheckUtils {
 
-//    public static Boolean isChainValid(Chain chain) {
-//        Block currentBlock;
-//        Block previousBlock;
-//
-//        for (int i = 1; i < chain.size(); i++) {
-//            currentBlock = chain.get(i);
-//            previousBlock = chain.get(i - 1);
-//            if (!currentBlock.getHash().equals(currentBlock.computeHash(currentBlock.getPreHash(),
-//                    currentBlock.getData()))) {
-//                System.out.println("区块hash值不匹配");
-//                return false;
-//            }
-//            if (!previousBlock.getHash().equals(currentBlock.getPreHash())) {
-//                System.out.println("链结构不匹配");
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
+    public static Boolean isChainValid(Chain chain) {
+        Block currentBlock;
+        Block previousBlock;
+
+        for (int i = 1; i < chain.size(); i++) {
+            currentBlock = chain.get(i);
+            previousBlock = chain.get(i - 1);
+            if (!currentBlock.getHash().equals(currentBlock.computeHash())) {
+                System.out.println("区块hash值不匹配");
+                return false;
+            }
+            if (!previousBlock.getHash().equals(currentBlock.getPreHash())) {
+                System.out.println("链结构不匹配");
+                return false;
+            }
+        }
+        return true;
+    }
 }
